@@ -19,13 +19,12 @@ export default function TermsPage() {
     return null;
   }
 
-  const { nickname, email } = authState.user;
+  //const { nickname, email } = authState.user;
 
   return (
     <div>
       <h1>약관 동의</h1>
-      <p>{nickname}</p>
-      <p>{email}</p>
+
     </div>
   );
 }

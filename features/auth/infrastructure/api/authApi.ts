@@ -3,16 +3,16 @@ import { AuthUser } from '../../domain/model/authUser';
 
 export interface MeResponse {
   user: AuthUser;
-  requiresTermsAgreement: boolean;
+  is_registered: boolean;
 }
 
 export const authApi = {
   getKakaoOAuthUrl: (): string =>
     `${env.apiBaseUrl}${env.kakaoLoginPath}`,
 
-  fetchMe: async (token: string): Promise<MeResponse> => {
+  fetchMe: async (): Promise<MeResponse> => {
     const response = await fetch(`${env.apiBaseUrl}/authentication/me`, {
-      headers: { Authorization: `Bearer ${token}` },
+      credentials: 'include',
     });
     if (!response.ok) {
       throw new Error('Failed to fetch user info');
